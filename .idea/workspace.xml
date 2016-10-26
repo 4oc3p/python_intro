@@ -20,7 +20,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="converter_v2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Home7.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Home7.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="converter_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/converter_v2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -32,6 +42,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -39,6 +56,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/converter_v2.py" />
+        <option value="$PROJECT_DIR$/Home6.py" />
+        <option value="$PROJECT_DIR$/Home7.py" />
       </list>
     </option>
   </component>
@@ -102,7 +121,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub" />
   </component>
-  <component name="RunManager" selected="Python.converter_v2">
+  <component name="RunManager" selected="Python.Home7">
     <configuration default="false" name="converter_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -116,6 +135,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_intro" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/converter_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Home7" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_intro" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Home7.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -254,12 +290,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.converter_v2" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Home7" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.converter_v2" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.Home7" />
+        <item index="1" class="java.lang.String" itemvalue="Python.converter_v2" />
       </list>
     </recent_temporary>
   </component>
@@ -319,6 +357,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Home7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
           <folding />
         </state>
       </provider>
