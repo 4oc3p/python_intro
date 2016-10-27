@@ -1,5 +1,6 @@
 import math
 
+
 # Ввод сторон треугольника
 input_width = float(input("Введите ширину треугольника: "))
 input_height = float(input("Введите высоту треугольника: "))
