@@ -17,6 +17,6 @@ def perimeter(a, b):
 
 
 # Вывод
-print("Площадь треугольника со сторонами %dсм и %dсм равняется %sсм, а периметр равен %sсм" % (
+print("Площадь треугольника со сторонами %s см и %s см равняется %s см, а периметр равен %s см" % (
     input_width, input_height, square(input_width, input_height), perimeter(input_width, input_height)))
 
