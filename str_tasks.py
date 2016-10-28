@@ -5,7 +5,7 @@ if user_decide == 1:
     user_name = input("Имя: ")
     print("Hello, %s" % user_name)
 elif user_decide == 2:
-    a = round(len(user_input1) / 2 + 0.1)
+    a = (len(user_input1) + 1) // 2
     print(user_input1[0:a])
 elif user_decide == 3:
     user_input2 = input("Второе слово: ")
