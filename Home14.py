@@ -4,7 +4,7 @@ input_speed2 = int(input("Скорость второго поезда: "))
 
 # Ф-я расчета времени нужного для достижения съезда
 def is_crashed(a, b):
-    if (4 / a) > (6 / b):
+    if (4 / a) >= (6 / b):
         return True
     else:
         return False
