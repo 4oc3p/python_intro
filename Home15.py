@@ -2,14 +2,13 @@ import math
 
 print("Вид уравнения ax\u00b2 + bx + c = 0")
 # Ввод переменных
-a, b, c = float(input("Первый коэф. a = ")), float(input("Второй коэф. b = ")), float(input("Свободный член c = "))
+a, b, c = float(input("Первый коэф. a > 0 = ")), float(input("Второй коэф. b = ")), float(input("Свободный член c = "))
 
 
 # Нахождение дискриминанта
 def disc(a, b, c):
     if a > 0:
         return pow(b, 2) - 4 * a * c
-    pass
 
 
 # Вычисление корней
