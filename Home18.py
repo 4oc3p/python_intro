@@ -5,9 +5,24 @@ import random
 a = random.randint(1e11, 1e12)
 
 
-# Преобразование в список
-lst_a = [int(i) for i in str(a)]
+# Ф-я перевода числа в строку и запаковка в список, далее выбор наибольшего
+def biggest_digit(a):
+    return max([int(i) for i in str(a)])
+
+
+# Ф-я циклического целочисленного деления и выделения последних цифр числа, далее сравнение по очереди
+def biggest_digit2(a):
+    maximum = 0
+    while a > 0:
+        work = a % 10
+        maximum = max(work, maximum)
+        a //= 10
+    return maximum
 
 
 # Вывод и выбор наибольшей цифры из списка
-print(max(lst_a))
+print("Самой большой цифрой числа %d является %d, выбор из списка" % (a, biggest_digit(a)))
+
+
+# Выбор и вывод наибольшей цифры методом перебора
+print("Самой большой цифрой числа %d является %d, перебор целочисленным делением" % (a, biggest_digit2(a)))
