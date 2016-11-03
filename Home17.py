@@ -18,5 +18,6 @@ def fact_recursive(a):
         return a * fact_recursive(a - 1)
 
 
-print(fact_of_number(numb1))
-print(fact_recursive(numb1))
+# Вывод результатов
+print("Факториал числа %d:\nМетодом цикла: %d\nМетодом рекурсии: %d" % (
+    numb1, fact_of_number(numb1), fact_recursive(numb1)))
