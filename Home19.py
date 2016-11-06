@@ -1,12 +1,15 @@
+import math
+
 # Ввод
-input_from = int(input("Вывод начинать с числа: "))
-input_to = int(input("Вывод закончить числом: "))
+input_from = int(input("Проверку начинать с числа: "))
+input_to = int(input("Проверку закончить числом: "))
 
 
 # Ф-я для вывода чисел
-def from2something(a, b, c=1):
-    for i in range(a, b+1, c):
-        print(i)
+def simple_dig(a, b):
+    for i in range(a, b):
+        if (math.factorial(i - 1) + 1) % i == 0:
+            print(i)
 
 
-from2something(input_from, input_to)
+simple_dig(input_from, input_to)
