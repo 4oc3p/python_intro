@@ -24,4 +24,4 @@ def sum_of_digits(a):
 
 
 # Вывод второй ф-ии
-print("Сумма цифр числа %d равняется %d" % (number_input2,sum_of_digits(number_input2)))
+print("Сумма цифр числа %d равняется %d" % (number_input2, sum_of_digits(number_input2)))
