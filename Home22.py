@@ -10,14 +10,12 @@ def check_digit(a, b):
     rand = random.randint(a, b)
     while True:
         user_try = int(input("Ваша попытка: "))
-        if user_try < a or user_try > b:
+        if user_try not in range(a, b+1):
             print("Числа только в диапазоне от %d до %d!" % (a, b))
         elif user_try < rand:
             print("Неверно! Число больше!")
-            continue
         elif user_try > rand:
             print("Неверно! Число меньше!")
-            continue
         else:  # else нормально в этом случае?
             print("Угадали! Число действительно", rand)
             break
