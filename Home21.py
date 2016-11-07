@@ -15,8 +15,9 @@ def is_1and7_in(a, b):
                 has1 = True
             if check_last == 7:
                 has7 = True
-        if has1 and has7:
-            print(i)
+            if has1 and has7:
+                print(i)
+                break
 #             l += [i]
 #    return l
 
