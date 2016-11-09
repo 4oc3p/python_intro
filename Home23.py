@@ -1,7 +1,7 @@
-lst = [1, 2, 3, 42, 51, 65, 74, 83, 92, 102]
+lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 def average(l):
-    return sum(l) / len(l)
+    return round(sum(l) / len(l), 2)
 
 print("Среднее арифметическое чисел %s = %s" % (lst, average(lst)))
