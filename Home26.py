@@ -17,9 +17,12 @@ def average(l):
     return round(sum(l) / len(l), 2)
 
 
+fill_list(lst1), fill_list(lst2)
+
+
 def print_lists(l1, l2):
-    print("Первый список: %s, ср.ар. =  %s" % (fill_list(l1), average(l1)))
-    print("Второй список: %s, ср.ар. =  %s" % (fill_list(l2), average(l2)))
+    print("Первый список: %s, ср.ар. =  %s" % (l1, average(l1)))
+    print("Второй список: %s, ср.ар. =  %s" % (l2, average(l2)))
 
 
 def results(l1, l2):
