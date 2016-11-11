@@ -18,6 +18,8 @@ def compare(l):
             minus_zero_one[1] += 1
         else:
             minus_zero_one[2] += 1
+    # for elem in l:
+    #     minus_zero_one[elem + 1] += 1
     return minus_zero_one
 
 
