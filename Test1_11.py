@@ -6,9 +6,9 @@ list_2d = [[1, 2, 3, 4, 5],
            [11, 12, 13, 14, 15]]
 
 
-def check_even(a):
-    l = [x for x in range(len(a[0])) if x % 2 == 0]
-    return l
+# def check_even(a):
+#     l = [x for x in range(len(a[0])) if x % 2 == 0]
+#     return l
 
 
 def column_even_ascend_odd_descend(a):
@@ -16,7 +16,7 @@ def column_even_ascend_odd_descend(a):
         l = []
         for j in range(len(a)):
             l.append(a[j][i])
-        if i in check_even(a):
+        if i % 2 == 0:
             l.sort(reverse=True)
         else:
             l.sort()
