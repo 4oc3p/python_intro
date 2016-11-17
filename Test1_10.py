@@ -18,5 +18,5 @@ def print_matrix(m):
             print(m[i][j], end="\t")
         print("")
 
-
-print_matrix(transpose(matrix_one))
+if __name__ == '__main__':
+    print_matrix(transpose(matrix_one))
