@@ -1,8 +1,8 @@
 import Test1_10
 
-list_2d = [[1, 2, 3],
-           [5, 6, 7],
-           [9, 10, 11]]
+list_2d = [[1, 2, 3, 4, 5],
+           [6, 7, 8, 9, 10],
+           [11, 12, 13, 14, 15]]
 
 
 def check_even(a):
@@ -10,11 +10,18 @@ def check_even(a):
     return l
 
 
-def sort2dlist(a):
-    for i in range(len(a)):
-        l1 = []
-        for j in range(len(a[i])):
-            l1.append(a[j][i])
+def column_even_ascend_odd_descend(a):
+    for i in range(len(a[0])):
+        l = []
+        for j in range(len(a)):
+            l.append(a[j][i])
+        if i in check_even(a):
+            l.sort()
+        else:
+            l.sort(reverse=True)
+        for j in range(len(a)):
+            a[j][i] = l[j]
+    return a
 
 
-sort2dlist(list_2d)
+Test1_10.print_matrix(column_even_ascend_odd_descend(list_2d))
