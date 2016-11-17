@@ -3,11 +3,10 @@ user_input2 = float(input("Введите число 2: "))
 
 
 def check2ten(a, b):
-    c = abs(10 - a)
-    d = abs(10 - b)
+    c, d = abs(10 - a), abs(10 - b)
     if c > d:
-        return user_input2
+        return b
     else:
-        return user_input1
+        return a
 
 print("Ближайшее число к 10:", check2ten(user_input1, user_input2))
