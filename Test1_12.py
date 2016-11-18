@@ -9,7 +9,6 @@ def mult_table_no_repeats():
                 pass
             else:
                 l.append("%dx%d" % (i, j))
-    print(l)
     return l
 
 
@@ -19,6 +18,6 @@ def random_choice(a):
         b = random.choice(a)
         if b not in l:
             l.append(b)
-    return l
+    return ','.join(l)
 
 print("Случайные 15 примеров:", random_choice(mult_table_no_repeats()))
