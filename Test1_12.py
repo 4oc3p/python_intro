@@ -3,11 +3,9 @@ import random
 
 def mult_table_no_repeats():
     l = []
-    a = 1
     for i in range(2, 10):
-        a += 1
-        for j in range(a, 10):
-                l.append("%dx%d" % (i, j))
+        for j in range(i, 10):
+            l.append("%dx%d" % (i, j))
     return l
 
 
