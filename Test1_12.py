@@ -10,11 +10,7 @@ def mult_table_no_repeats():
 
 
 def random_choice(a):
-    l = []
-    while len(l) < 15:
-        b = random.choice(a)
-        l.append(b)
-        a.remove(b)
-    return ','.join(l)
+    random.shuffle(a)
+    return ','.join(a[:15])
 
 print("Случайные 15 примеров:", random_choice(mult_table_no_repeats()))
