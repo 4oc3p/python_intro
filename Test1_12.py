@@ -16,8 +16,8 @@ def random_choice(a):
     l = []
     while len(l) < 15:
         b = random.choice(a)
-        if b not in l:
-            l.append(b)
+        l.append(b)
+        a.remove(b)
     return ','.join(l)
 
 print("Случайные 15 примеров:", random_choice(mult_table_no_repeats()))
