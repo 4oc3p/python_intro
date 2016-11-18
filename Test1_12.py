@@ -9,11 +9,16 @@ def mult_table_no_repeats():
                 pass
             else:
                 l.append("%dx%d" % (i, j))
+    print(l)
     return l
 
 
 def random_choice(a):
-    return ','.join([random.choice(a) for i in range(15)])
-
+    l = []
+    while len(l) < 15:
+        b = random.choice(a)
+        if b not in l:
+            l.append(b)
+    return l
 
 print("Случайные 15 примеров:", random_choice(mult_table_no_repeats()))
