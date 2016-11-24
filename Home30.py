@@ -78,25 +78,16 @@ def update_students_results():
 
 
 def save_students_info(dct, sort_by_key="fullname", revers=False, rewrite=True):
-    l = [dct[i][sort_by_key] for i in dct]
-    if revers:
-        l.sort(reverse=True)
-    else:
-        l.sort()
-    checker = 0
     f = open("students_result.txt", ("a", "w")[rewrite])
-    while checker < len(dct):
-        for i in dct:
-            if dct[i][sort_by_key] == l[checker]:
-                f.write("-"*41+"\n")
-                f.write("%-20s %19s:" % (": ID: ", i)+"\n")
-                f.write(":" + "."*39 + ":"+"\n")
-                f.write("%-20s %19s:" % (": Full name:", dct[i]["fullname"])+"\n")
-                f.write("%-20s %19s:" % (": Email:", dct[i]["email"])+"\n")
-                f.write("%-20s %19s:" % (": Github:", dct[i]["github"].split("/")[-1])+"\n")
-                f.write("%-20s %19s:" % (": Rank:", dct[i]["rank"])+"\n")
-                f.write("-"*41+"\n")
-        checker += 1
+    for word in sorted(dct, key=lambda w: dct[w][sort_by_key], reverse=revers):
+        f.write("-"*41+"\n")
+        f.write("%-20s %19s:" % (": ID: ", word)+"\n")
+        f.write(":" + "."*39 + ":"+"\n")
+        f.write("%-20s %19s:" % (": Full name:", dct[word]["fullname"])+"\n")
+        f.write("%-20s %19s:" % (": Email:", dct[word]["email"])+"\n")
+        f.write("%-20s %19s:" % (": Github:", dct[word]["github"].split("/")[-1])+"\n")
+        f.write("%-20s %19s:" % (": Rank:", dct[word]["rank"])+"\n")
+        f.write("-"*41+"\n")
     f.write(str(asctime())+"\n")
     f.close()
 
@@ -108,6 +99,6 @@ def print_students_info(file):
 
 
 update_students_results()
-save_students_info(group)
+save_students_info(group, revers=True, sort_by_key="rank")
 print_students_info("students_result.txt")
 
