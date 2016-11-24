@@ -84,10 +84,7 @@ def save_students_info(dct, sort_by_key="fullname", revers=False, rewrite=True):
     else:
         l.sort()
     checker = 0
-    if rewrite:
-        f = open("students_result.txt", "w")
-    else:
-        f = open("students_result", "a")
+    f = open("students_result.txt", ("a", "w")[rewrite])
     while checker < len(dct):
         for i in dct:
             if dct[i][sort_by_key] == l[checker]:
@@ -96,11 +93,11 @@ def save_students_info(dct, sort_by_key="fullname", revers=False, rewrite=True):
                 f.write(":" + "."*39 + ":"+"\n")
                 f.write("%-20s %19s:" % (": Full name:", dct[i]["fullname"])+"\n")
                 f.write("%-20s %19s:" % (": Email:", dct[i]["email"])+"\n")
-                f.write("%-20s %19s:" % (": Github:", dct[i]["github"][dct[i]["github"].rfind("/", 0)+1:])+"\n")
+                f.write("%-20s %19s:" % (": Github:", dct[i]["github"].split("/")[-1])+"\n")
                 f.write("%-20s %19s:" % (": Rank:", dct[i]["rank"])+"\n")
                 f.write("-"*41+"\n")
         checker += 1
-    f.write(str(asctime()))
+    f.write(str(asctime())+"\n")
     f.close()
 
 
