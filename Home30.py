@@ -1,5 +1,13 @@
 from time import asctime
+import time
 
+
+class Profiler(object):
+    def __enter__(self):
+        self._startTime = time.time()
+
+    def __exit__(self, type, value, traceback):
+        print("Elapsed time: {:.3f} sec".format(time.time() - self._startTime))
 
 group = {
     1024: {"fullname": "Грицаенко Евгений",  "email": "", "github": "https://github.com/ZhenyaGricaenko", "rank": 0},
@@ -67,26 +75,25 @@ test1_costs = {
 
 
 def update_students_results():
+    r = {}
+    for i in hw_results:
+        r[i.get("id")] = sum(i.get("task_completion"))
+    for i in test1_results:
+        r[i.get("id")] += sum([test1_costs[a] * i.get("task_completion")[a-1] for a in test1_costs])
     for i in group:
-        for j in range(len(hw_results)):
-            if hw_results[j].get("id") == i:
-                group[i]["rank"] += sum(hw_results[j].get("task_completion"))
-        for k in range(len(test1_results)):
-            if hw_results[k].get("id") == i:
-                l = [test1_results[k].get("task_completion")[y]*test1_costs[y+1] for y in range(len(test1_results[k].get("task_completion")))]
-                group[i]["rank"] += sum(l)
+        group[i]["rank"] = r[i]
 
 
 def save_students_info(dct, sort_by_key="fullname", revers=False, rewrite=True):
     f = open("students_result.txt", ("a", "w")[rewrite])
-    for word in sorted(dct, key=lambda w: dct[w][sort_by_key], reverse=revers):
+    for student_id in sorted(dct, key=lambda w: dct[w][sort_by_key], reverse=revers):
         f.write("-"*41+"\n")
-        f.write("%-20s %19s:" % (": ID: ", word)+"\n")
+        f.write("%-20s %19s:" % (": ID: ", student_id)+"\n")
         f.write(":" + "."*39 + ":"+"\n")
-        f.write("%-20s %19s:" % (": Full name:", dct[word]["fullname"])+"\n")
-        f.write("%-20s %19s:" % (": Email:", dct[word]["email"])+"\n")
-        f.write("%-20s %19s:" % (": Github:", dct[word]["github"].split("/")[-1])+"\n")
-        f.write("%-20s %19s:" % (": Rank:", dct[word]["rank"])+"\n")
+        f.write("%-20s %19s:" % (": Full name:", dct[student_id]["fullname"])+"\n")
+        f.write("%-20s %19s:" % (": Email:", dct[student_id]["email"])+"\n")
+        f.write("%-20s %19s:" % (": Github:", dct[student_id]["github"].split("/")[-1])+"\n")
+        f.write("%-20s %19s:" % (": Rank:", dct[student_id]["rank"])+"\n")
         f.write("-"*41+"\n")
     f.write(str(asctime())+"\n")
     f.close()
@@ -97,8 +104,8 @@ def print_students_info(file):
     print(f.read())
     f.close()
 
-
-update_students_results()
-save_students_info(group, revers=True, sort_by_key="rank")
-print_students_info("students_result.txt")
+with Profiler() as p:
+    update_students_results()
+    save_students_info(group, revers=True, sort_by_key="rank")
+    print_students_info("students_result.txt")
 
