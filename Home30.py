@@ -1,13 +1,6 @@
 from time import asctime
-import time
+import sys
 
-
-class Profiler(object):
-    def __enter__(self):
-        self._startTime = time.time()
-
-    def __exit__(self, type, value, traceback):
-        print("Elapsed time: {:.3f} sec".format(time.time() - self._startTime))
 
 group = {
     1024: {"fullname": "Грицаенко Евгений",  "email": "", "github": "https://github.com/ZhenyaGricaenko", "rank": 0},
@@ -75,37 +68,23 @@ test1_costs = {
 
 
 def update_students_results():
-    r = {}
-    for i in hw_results:
-        r[i.get("id")] = sum(i.get("task_completion"))
-    for i in test1_results:
-        r[i.get("id")] += sum([test1_costs[a] * i.get("task_completion")[a-1] for a in test1_costs])
-    for i in group:
-        group[i]["rank"] = r[i]
+    for hw_result in hw_results:
+        group[hw_result.get("id")]["rank"] = sum(hw_result.get("task_completion"))
+    for test1_result in test1_results:
+        group[test1_result.get("id")]["rank"] += sum([test1_costs[a] * test1_result.get("task_completion")[a-1] for a in test1_costs])
 
 
-def save_students_info(dct, sort_by_key="fullname", revers=False, rewrite=True):
-    f = open("students_result.txt", ("a", "w")[rewrite])
-    for student_id in sorted(dct, key=lambda w: dct[w][sort_by_key], reverse=revers):
-        f.write("-"*41+"\n")
-        f.write("%-20s %19s:" % (": ID: ", student_id)+"\n")
-        f.write(":" + "."*39 + ":"+"\n")
-        f.write("%-20s %19s:" % (": Full name:", dct[student_id]["fullname"])+"\n")
-        f.write("%-20s %19s:" % (": Email:", dct[student_id]["email"])+"\n")
-        f.write("%-20s %19s:" % (": Github:", dct[student_id]["github"].split("/")[-1])+"\n")
-        f.write("%-20s %19s:" % (": Rank:", dct[student_id]["rank"])+"\n")
-        f.write("-"*41+"\n")
-    f.write(str(asctime())+"\n")
-    f.close()
+def save_students_info(dct, sort_by_key="fullname", reverse=False, write_to_file=False, rewrite=True):
+    file = (sys.stdout, open("results.txt", ("a", "w")[rewrite]))[write_to_file]
+    for student_id in sorted(dct, key=lambda w: dct[w][sort_by_key], reverse=reverse):
+        print("%s\n%-20s %30s:\n:%s:" % ("-"*52, ": ID: ", student_id, "."*50), file=file)
+        for keys in sorted(dct[student_id]):
+            print("%-15s %35s:" % (": " + keys.capitalize() + ":", dct[student_id][keys]), file=file)
+        print("-"*52, file=file)
+    print(str(asctime()), file=file)
+    file.close()
 
 
-def print_students_info(file):
-    f = open(file, "r")
-    print(f.read())
-    f.close()
-
-with Profiler() as p:
-    update_students_results()
-    save_students_info(group, revers=True, sort_by_key="rank")
-    print_students_info("students_result.txt")
+update_students_results()
+save_students_info(group, reverse=True, sort_by_key="rank")
 
