@@ -24,10 +24,12 @@ plane2 = plane.Plane(speed_limit=740,
                      fuel_tank_size=24330,
                      number_of_seats=154,
                      service_ceiling=16200,
-                     current_alt=15000)
+                     current_alt=18000)
 
 
-# car1.print_info()
-# car2.print_info()
-# plane1.print_info()
+car1.print_info()
+car2.print_info()
+plane1.print_info()
+plane2.print_info()
+plane2.decrease_alt()
 plane2.print_info()
