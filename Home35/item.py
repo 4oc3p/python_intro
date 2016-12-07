@@ -10,17 +10,12 @@ class Item:
         self.cost_price = cost_price
         self._shelf_price = None
         self.shelf_price = shelf_price
-        self._margin = self.shelf_price - self.cost_price
         Item.id += 1
         self.id = Item.id
 
     @staticmethod
     def is_positive(price):
         return price > 0
-
-    @property
-    def margin(self):
-        return self._margin
 
     @property
     def cost_price(self):
