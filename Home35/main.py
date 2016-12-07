@@ -23,13 +23,11 @@ store1.supply(item=item3,
 
 store1.print_status()
 
-invoice1 = SellInvoice(item=item1,
-                       quantity=7,
-                       store=store1)
-invoice2 = SellInvoice(item=item2,
-                       quantity=5,
-                       store=store1,
+invoice1 = SellInvoice(store=store1)
+
+invoice2 = SellInvoice(store=store1,
                        user_discount=13)
 
+invoice1.add_item(item1, 3)
+invoice1.accept()
 invoice1.print_invoice()
-invoice2.print_invoice()
