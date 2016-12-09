@@ -1,14 +1,31 @@
 class Store:
 
+    #=================================================================
     def __init__(self):
-        self.items = {}  # key = item_name, value = quantity
-        self.margin = {}  # key = item_name, value = margin
+        self._items = {}
 
+    #=================================================================
+    def balance(self, item):
+        return self._items.get(item, 0)
+
+    #=================================================================
     def supply(self, item, quantity):
-        self.margin[item.name] = self.margin.get(item.name, item.shelf_price - item.cost_price)
         if quantity > 0:
-            self.items[item.name] = self.items.get(item.name, 0) + quantity
+            self._items[item] = self._items.get(item, 0) + quantity
 
+    #=================================================================
+    def withdraw(self, item, quantity):
+        if quantity <= 0:
+            raise ValueError("Negative quantity: ", quantity)
+
+        curr_balance = self._items.get(item, 0)
+        if curr_balance >= quantity:
+            self._items[item] = curr_balance - quantity
+        else:
+            raise BaseException("Negative balance: %d->%d" % (curr_balance, quantity))
+
+    #=================================================================
     def print_status(self):
-        for item in sorted(self.items):
-            print("Количество %s - %d шт." % (item, self.items[item]))
+        print("Balance:")
+        for item in sorted(self._items, key=lambda item: item.name):
+            print("\t%s - %d pcs." % (item.name, self._items[item]))

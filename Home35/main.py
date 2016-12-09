@@ -1,7 +1,10 @@
+from datetime import date, timedelta
+
 from Home35.item import Item
 from Home35.store import Store
 from Home35.sellinvoice import SellInvoice
-from Home35.profitcheck import ProfitCheck
+from Home35.invoice_journal import InvoiceJournal
+from Home35.report import Report
 
 item1 = Item(name="Item1",
              cost_price=11,
@@ -39,8 +42,10 @@ invoice2.add_item(item2, 4)
 invoice2.accept()
 invoice2.print_invoice()
 
-profit1 = ProfitCheck(store1)
-profit1.add_invoice(invoice1)
+journal1 = InvoiceJournal()
+journal1.add_invoice(invoice1)
+journal1.add_invoice(invoice2)
 
-profit1.add_invoice(invoice2)
-profit1.print_items_profit()
+report1 = Report(journal1)
+report1.profit_by_item(date.today() - timedelta(days=1),
+                       date.today() + timedelta(days=1))
