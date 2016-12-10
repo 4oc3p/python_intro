@@ -39,6 +39,12 @@ class Item:
         else:
             raise ValueError('Incorrect value: %d' % price)
 
+    def margin(self):
+        return self.shelf_price - self.cost_price
+
     def print_info(self):
         print("-"*20)
-        print("ID: %d, Name: %s, Price: %d" % (self.id, self.name, self.shelf_price))
+        print(self)
+
+    def __str__(self):
+        return "ID: %d, Name: %s, Price: %d" % (self.id, self.name, self.shelf_price)
