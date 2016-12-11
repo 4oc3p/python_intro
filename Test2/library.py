@@ -2,9 +2,13 @@ class Library(object):
 
     def __init__(self):
         self._content = {}
+        self._permission = {}
 
     def quantity(self, product):
         return self._content.get(product)
+
+    def permission(self):
+        return self._permission
 
     def content(self):
         return self._content
