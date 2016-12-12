@@ -1,3 +1,6 @@
+from Test2.printedproduction import PrintedProduction
+
+
 class Statistics(object):
 
     def __init__(self, registry):
@@ -9,16 +12,16 @@ class Statistics(object):
         for regform in self.registry:
             if regform.give_back_date is None and regform.person == person:
                 for product in regform.result():
-                    if product.type is "Book":
-                        sum_books += regform.result()[product]
-                    elif product.type is "Magazine":
-                        sum_magazines += regform.result()[product]
+                    if product.type is PrintedProduction.Type.Book.name:
+                        sum_books += regform.temp()[product]
+                    elif product.type is PrintedProduction.Type.Magazine.name:
+                        sum_magazines += regform.temp()[product]
         print("Person %s has %d books and %d magazines" % (person.fullname, sum_books, sum_magazines))
 
     def person_most_read(self):
         most_readers = {}
         for regform in self.registry:
-            if regform.give_back_date is not None:
+            if regform.give_back_date is not None and regform.opened is False:
                 most_readers[regform.person] = most_readers.get(regform.person, 0) + sum(regform.result().values())
 
         for person in sorted(most_readers, key=most_readers.get, reverse=True):
@@ -34,12 +37,14 @@ class Statistics(object):
         book = 1
         mag = 1
         for product in sorted(most_read_product, key=most_read_product.get, reverse=True):
-            if book == 1 and product.type is "Book":
+            if book == 1 and product.type is PrintedProduction.Type.Book.name:
                 print("Most read book is %s" % product.title)
                 book = 0
-            if mag == 1 and product.type is "Magazine":
+            if mag == 1 and product.type is PrintedProduction.Type.Magazine.name:
                 print("Most read magazine is %s" % product.title)
                 mag = 0
+            if mag and book is not True:
+                break
 
     def books_or_magazines(self):
         most_read_product = {}

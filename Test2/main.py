@@ -30,11 +30,13 @@ regform1.provide(book1, 1)
 regform1.provide(magazine1, 1)
 regform1.give_back(book1, 1)
 regform1.give_back(magazine1, 1)
+regform1.close_reg()
 
 regform2.provide(book2, 2)
 regform2.provide(magazine2, 1)
 regform2.give_back(book2, 2)
 regform2.give_back(magazine2, 1)
+regform2.close_reg()
 
 registry1 = registry.Registry()
 registry1.add_regform(regform1)
