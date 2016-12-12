@@ -29,7 +29,7 @@ class RegForm(object):
         if qty <= self.library.quantity(product):
             if self.library.permission().get(self.person) + qty <= RegForm.MAXIMUM_BOOKS_ON_HAND:
                 self.result()[product] = self.result().get(product, 0) + qty
-                self.temp[product] = self.temp.get(product, 0) + qty
+                self.temp()[product] = self.temp().get(product, 0) + qty
                 self.library.remove_product(product, qty)
                 self.library.permission()[self.person] += qty
                 self.provide_date = RegForm.date()
@@ -40,15 +40,15 @@ class RegForm(object):
             raise ValueError('There is no such product')
 
     def give_back(self, product, qty):
-        if qty <= self.temp[product]:
+        if qty <= self.temp()[product]:
             self.library.permission()[self.person] -= qty
             self.library.add_product(product, qty)
-            self.temp[product] -= qty
+            self.temp()[product] -= qty
         else:
             raise ValueError('Cannot return more than taken!')
 
     def close_reg(self):
-        if sum(self.temp.values()) == 0:
+        if sum(self.temp().values()) == 0:
             self.give_back_date = RegForm.date()
             self.opened = False
         else:
